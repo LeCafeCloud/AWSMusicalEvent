@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.3.4/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -12,12 +12,12 @@
 			"!**/node_modules",
 			"!**/dist",
 			"!**/build",
+			"!**/.next",
 			"!**/.sst",
-			"!**/.astro",
 			"!**/*.config.js",
 			"!**/*.config.mjs",
 			"!**/sst-env.d.ts",
-			"!packages/db/migrations"
+			"!packages/web/db/migrations"
 		]
 	},
 	"formatter": {
@@ -34,7 +34,8 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-				"noExplicitAny": "error"
+				"noExplicitAny": "error",
+				"noUnknownAtRules": "off"
 			},
 			"complexity": {
 				"noForEach": "off"
@@ -50,6 +51,10 @@
 			"a11y": {
 				"noSvgWithoutTitle": "off"
 			}
+		},
+		"domains": {
+			"next": "recommended",
+			"react": "recommended"
 		}
 	},
 	"overrides": [

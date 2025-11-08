@@ -4,6 +4,7 @@ export const secrets = {
 
 	// Neon Secrets
 	neonProjectId: new sst.Secret("NeonProjectId"),
+	neonProdBranchId: new sst.Secret("NeonProdBranchId"),
 	neonPassword: new sst.Secret("NeonPassword"),
 
 	// OAuth Secrets
@@ -11,7 +12,4 @@ export const secrets = {
 	githubClientSecret: new sst.Secret("GitHubClientSecret"),
 };
 
-export const allOAuthSecrets = [
-	secrets.githubClientId,
-	secrets.githubClientSecret,
-];
+export const allOAuthSecrets = [secrets.githubClientId, secrets.githubClientSecret];

@@ -3,6 +3,6 @@ export const startCommon = async () => {
 	await import("./dynamo");
 	await import("./email");
 	await import("./neon");
-	// await import("./dev");
-	// await import("./setup");
+	await import("./dev");
+	await import("./setup");
 };

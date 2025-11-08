@@ -1,3 +1,3 @@
-export const startCommon = async () => {
+export const startAwSymphony = async () => {
 	await import("./next");
 };

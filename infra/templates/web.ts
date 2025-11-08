@@ -1,45 +1,3 @@
-export type CreateStaticSiteProps = {
-	name: string;
-	path: string;
-	domain: string;
-	otherConfig?: Partial<sst.aws.StaticSiteArgs>;
-};
-
-export const createStaticSite = ({ name, path, domain, otherConfig }: CreateStaticSiteProps) => {
-	return new sst.aws.StaticSite(name, {
-		path,
-		domain: {
-			name: domain,
-			dns: sst.cloudflare.dns(),
-		},
-		dev: {
-			url: `https://${domain}`,
-		},
-		...otherConfig,
-	});
-};
-
-export type CreateAstroProps = {
-	name: string;
-	path: string;
-	domain: string;
-	otherConfig?: Partial<sst.aws.AstroArgs>;
-};
-
-export const createAstro = ({ name, path, domain, otherConfig }: CreateAstroProps) => {
-	return new sst.aws.Astro(name, {
-		path,
-		domain: {
-			name: domain,
-			dns: sst.cloudflare.dns(),
-		},
-		dev: {
-			url: `https://${domain}`,
-		},
-		...otherConfig,
-	});
-};
-
 export type CreateNextProps = {
 	name: string;
 	path: string;
@@ -55,7 +13,7 @@ export const createNext = ({ name, path, domain, otherConfig }: CreateNextProps)
 			dns: sst.cloudflare.dns(),
 		},
 		dev: {
-			url: `https://${domain}`,
+			url: $dev ? "http://localhost:3000" : `https://${domain}`,
 		},
 		...otherConfig,
 	});
