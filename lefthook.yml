@@ -1,0 +1,21 @@
+# Lefthook configuration
+# https://github.com/evilmartians/lefthook
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{ts,tsx,js,jsx,json}"
+      run: bun lint:fix
+      stage_fixed: true
+    typecheck:
+      glob: "packages/web/**/*.{ts,tsx}"
+      run: cd packages/web && bun check
+
+pre-push:
+  parallel: false
+  commands:
+    lint:
+      run: bun lint
+    typecheck:
+      run: cd packages/web && bun check
