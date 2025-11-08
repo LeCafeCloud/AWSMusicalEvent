@@ -1,6 +1,24 @@
 # Lefthook configuration
 # https://github.com/evilmartians/lefthook
 
+commit-msg:
+  commands:
+    conventional-commit:
+      run: |
+        msg=$(head -n1 {1})
+        pattern="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .+"
+        if ! echo "$msg" | grep -qE "$pattern"; then
+          echo "❌ Invalid commit message format!"
+          echo ""
+          echo "Format: <type>(<scope>): <subject>"
+          echo ""
+          echo "Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert"
+          echo ""
+          echo "Example: feat(auth): add github oauth login"
+          echo "Example: fix: resolve database connection issue"
+          exit 1
+        fi
+
 pre-commit:
   parallel: true
   commands:
