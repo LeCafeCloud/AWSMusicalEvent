@@ -10,7 +10,9 @@ export const createNext = ({ name, path, domain, otherConfig }: CreateNextProps)
 		path,
 		domain: {
 			name: domain,
-			dns: sst.cloudflare.dns(),
+			dns: sst.cloudflare.dns({
+				proxy: true,
+			}),
 		},
 		dev: {
 			url: $dev ? "http://localhost:3000" : `https://${domain}`,
