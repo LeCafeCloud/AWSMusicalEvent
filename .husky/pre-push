@@ -1,0 +1,2 @@
+bun lint
+cd packages/web && bun check
