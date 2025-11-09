@@ -5,8 +5,8 @@ import * as schema from "../db/schema";
 
 const sql = neon(Resource.NeonDatabaseUrl.url);
 
-// Client Drizzle avec tous les schemas
+// Client Drizzle with all schemas
 export const db = drizzle({ client: sql, schema });
 
-// Export du type pour usage ailleurs
+// Export the type for use elsewhere
 export type Database = typeof db;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Resource } from "sst";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -8,12 +9,12 @@ export default function HomePage() {
 			{/* Hero Section */}
 			<section className="flex flex-col items-center gap-6 text-center">
 				<Badge variant="secondary" className="w-fit">
-					AWS Musical Event Platform
+					{Resource.Config.name} Platform
 				</Badge>
 				<h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
 					Create and Manage
 					<br />
-					<span className="text-primary">Musical Events</span>
+					<span className="text-primary">Symphonies</span>
 				</h1>
 				<p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
 					A powerful platform to organize, manage, and experience musical events. Built with modern

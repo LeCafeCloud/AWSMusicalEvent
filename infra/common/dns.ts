@@ -48,7 +48,7 @@ export const urlsLink = new sst.Linkable("Urls", {
 	properties: {
 		// Domaines
 		domain: domain,
-		docsUrl: urls.docs,
-		awsymphonyUrl: urls.awsymphony,
+		docsUrl: $dev ? "http://localhost:4321" : urls.docs,
+		awsymphonyUrl: $dev ? "http://localhost:3000" : urls.awsymphony,
 	},
 });
