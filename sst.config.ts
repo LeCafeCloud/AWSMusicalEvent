@@ -19,5 +19,6 @@ export default $config({
 	async run() {
 		(await import("./infra/common")).startCommon();
 		(await import("./infra/awsymphony")).startAwSymphony();
+		(await import("./infra/docs")).startDocs();
 	},
 });

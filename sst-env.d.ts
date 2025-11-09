@@ -9,6 +9,15 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
+    "Config": {
+      "githubUrl": string
+      "name": string
+      "type": "sst.sst.Linkable"
+    }
+    "Docs": {
+      "type": "sst.aws.Astro"
+      "url": string
+    }
     "DynamoST": {
       "name": string
       "type": "sst.aws.Dynamo"
@@ -45,6 +54,12 @@ declare module "sst" {
     "NextApp": {
       "type": "sst.aws.Nextjs"
       "url": string
+    }
+    "Urls": {
+      "awsymphonyUrl": string
+      "docsUrl": string
+      "domain": string
+      "type": "sst.sst.Linkable"
     }
   }
 }

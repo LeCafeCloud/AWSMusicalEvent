@@ -23,3 +23,32 @@ export const { domain } = (() => {
 		domain: `${$app.stage}.${DEV}`,
 	};
 })();
+
+export const domains = {
+	get awsymphony() {
+		return domain;
+	},
+
+	get docs() {
+		return `docs.${domain}`;
+	},
+} as const;
+
+export const urls = {
+	get awsymphony() {
+		return `https://${domain}`;
+	},
+
+	get docs() {
+		return `https://${domains.docs}`;
+	},
+} as const;
+
+export const urlsLink = new sst.Linkable("Urls", {
+	properties: {
+		// Domaines
+		domain: domain,
+		docsUrl: urls.docs,
+		awsymphonyUrl: urls.awsymphony,
+	},
+});
