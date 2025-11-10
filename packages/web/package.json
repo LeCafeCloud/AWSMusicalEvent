@@ -1,5 +1,5 @@
 {
-	"name": "web",
+	"name": "@awsymphony/web",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -12,6 +12,7 @@
 		"better-auth:generate": "bun x @better-auth/cli generate --config ./lib/auth.ts --output ./db/schemas/auth.ts --yes"
 	},
 	"dependencies": {
+		"@awsymphony/email": "workspace:*",
 		"@aws-sdk/client-dynamodb": "^3.927.0",
 		"@aws-sdk/lib-dynamodb": "^3.927.0",
 		"@neondatabase/serverless": "^1.0.2",

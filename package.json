@@ -1,5 +1,5 @@
 {
-	"name": "askmy",
+	"name": "awsymphony",
 	"version": "0.0.0",
 	"workspaces": [
 		"packages/*",
