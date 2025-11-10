@@ -1,3 +1,4 @@
+import { EmailFactory } from "@awsymphony/email";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
@@ -20,7 +21,10 @@ export const auth = betterAuth({
 		magicLink({
 			sendMagicLink: async ({ email, url }) => {
 				console.log(`Send magic link to ${email}: ${url}`);
-				// Here you would integrate with your email service provider to send the email
+				EmailFactory.sendMagicLink({
+					email,
+					url,
+				});
 			},
 		}),
 		nextCookies(), // should be last
@@ -43,6 +47,13 @@ export const auth = betterAuth({
 							image,
 						},
 					};
+				},
+				after: async (user) => {
+					EmailFactory.sendWelcome({
+						email: user.email,
+						name: user.name,
+						dashboardUrl: `https://${Resource.Urls.awsymphonyUrl}/dashboard`,
+					});
 				},
 			},
 		},
