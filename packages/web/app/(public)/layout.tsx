@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import Link from "next/link";
 import { Resource } from "sst";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -8,8 +9,14 @@ import {
 	NavigationMenuList,
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { UserNav } from "@/components/user-nav";
+import { auth } from "@/lib/auth";
 
-export default function PublicLayout({ children }: { children: React.ReactNode }) {
+export default async function PublicLayout({ children }: { children: React.ReactNode }) {
+	const session = await auth.api.getSession({
+		headers: await headers(),
+	});
+
 	return (
 		<div className="flex min-h-screen flex-col bg-background">
 			<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -52,9 +59,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 					<div className="flex flex-1 items-center justify-end space-x-2">
 						<nav className="flex items-center gap-2">
 							<ThemeToggle />
-							<Link href="/login" className={navigationMenuTriggerStyle()}>
-								Login
-							</Link>
+							<UserNav user={session?.user || null} />
 						</nav>
 					</div>
 				</div>
