@@ -1,4 +1,4 @@
-import { bus, defaultBus } from "./bus";
+import { bus } from "./bus";
 
 export const debugFunction = new sst.aws.Function("DebugFunction", {
 	handler: "packages/lambdas/src/debug.handler",
