@@ -5,6 +5,7 @@ import { email } from "../common/email";
 import { neonDatabase } from "../common/neon";
 import { allOAuthSecrets, secrets } from "../common/secrets";
 import { createNext } from "../templates/web";
+import { realtime } from "./realtime";
 
 export const next = createNext({
 	name: "NextApp",
@@ -13,6 +14,7 @@ export const next = createNext({
 	otherConfig: {
 		link: [
 			email,
+			realtime,
 			neonDatabase.neonLink,
 			dynamoST,
 			secrets.betterAuthSecret,

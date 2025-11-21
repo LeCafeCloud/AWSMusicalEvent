@@ -1,0 +1,17 @@
+{
+	"name": "@awsymphony/lambdas",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"check": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@aws-sdk/client-eventbridge": "^3.930.0",
+		"@aws-sdk/client-iot-data-plane": "^3.929.0",
+		"sst": "*"
+	},
+	"devDependencies": {
+		"@types/aws-lambda": "^8.10.158",
+		"typescript": "^5.9.3"
+	}
+}

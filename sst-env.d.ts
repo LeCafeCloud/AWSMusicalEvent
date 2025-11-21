@@ -9,10 +9,29 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
+    "Bus": {
+      "arn": string
+      "name": string
+      "type": "sst.aws.Bus"
+    }
+    "BusToRealtime": {
+      "name": string
+      "type": "sst.aws.Function"
+    }
     "Config": {
       "githubUrl": string
       "name": string
       "type": "sst.sst.Linkable"
+    }
+    "DebugFunction": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "DefaultBus": {
+      "arn": string
+      "name": string
+      "type": "sst.aws.Bus"
     }
     "Docs": {
       "type": "sst.aws.Astro"
@@ -54,6 +73,15 @@ declare module "sst" {
     "NextApp": {
       "type": "sst.aws.Nextjs"
       "url": string
+    }
+    "Realtime": {
+      "authorizer": string
+      "endpoint": string
+      "type": "sst.aws.Realtime"
+    }
+    "TestBucket": {
+      "name": string
+      "type": "sst.aws.Bucket"
     }
     "Urls": {
       "awsymphonyUrl": string

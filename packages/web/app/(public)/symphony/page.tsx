@@ -3,24 +3,12 @@ import { SymphonyVisualizer } from "@/components/symphony/symphony-visualizer";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-interface SymphonyPageProps {
-	params: Promise<{
-		id: string;
-	}>;
-}
-
-export default async function SymphonyPage({ params }: SymphonyPageProps) {
-	const { id: symphonyId } = await params;
-
+export default async function SymphonyPage() {
 	// Server-side: Get Realtime config
 	const realtimeEndpoint = Resource.Realtime.endpoint;
 	const realtimeAuthorizer = Resource.Realtime.authorizer;
 	const appName = Resource.App.name;
 	const appStage = Resource.App.stage;
-
-	// TODO: Get tenantId from database based on symphonyId
-	// For now, use the AWS account ID hardcoded
-	const tenantId = "376129851637";
 
 	return (
 		<div className="mx-auto max-w-7xl space-y-6 py-8">
@@ -31,12 +19,10 @@ export default async function SymphonyPage({ params }: SymphonyPageProps) {
 						<div className="flex items-center gap-2">
 							<Badge variant="secondary">Symphony</Badge>
 							<Badge variant="outline" className="font-mono">
-								{symphonyId}
+								{Resource.Config.name}
 							</Badge>
 						</div>
-						<h1 className="text-4xl font-bold tracking-tight">
-							{symphonyId === "default" ? "AWSymphony Live" : `Symphony ${symphonyId}`}
-						</h1>
+						<h1 className="text-4xl font-bold tracking-tight">AWSymphony Live</h1>
 						<p className="text-lg text-muted-foreground">
 							Real-time AWS infrastructure events transformed into sound and visualization
 						</p>
@@ -48,7 +34,6 @@ export default async function SymphonyPage({ params }: SymphonyPageProps) {
 
 			{/* Main Visualizer */}
 			<SymphonyVisualizer
-				tenantId={tenantId}
 				realtimeEndpoint={realtimeEndpoint}
 				realtimeAuthorizer={realtimeAuthorizer}
 				appName={appName}

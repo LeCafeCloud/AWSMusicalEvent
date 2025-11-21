@@ -13,6 +13,7 @@ export function GitHubSignInButton({ disabled, onLoadingChange }: GitHubSignInBu
 		await authClient.signIn.social(
 			{
 				provider: "github",
+				callbackURL: "/dashboard",
 			},
 			{
 				onRequest: () => {

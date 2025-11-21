@@ -1,5 +1,6 @@
 import { next } from "../awsymphony/next";
 import { neonDatabase } from "../common/neon";
+import { configLink } from "./config";
 import { allOAuthSecrets, secrets } from "./secrets";
 
 new sst.x.DevCommand("GenerateAuthSchemas", {
@@ -8,7 +9,7 @@ new sst.x.DevCommand("GenerateAuthSchemas", {
 		directory: "packages/web",
 		autostart: false,
 	},
-	link: [neonDatabase.neonLink, secrets.betterAuthSecret, next, ...allOAuthSecrets],
+	link: [neonDatabase.neonLink, secrets.betterAuthSecret, next, ...allOAuthSecrets, configLink],
 });
 
 new sst.x.DevCommand("GenerateDatabase", {
